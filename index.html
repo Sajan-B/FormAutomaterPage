@@ -7,6 +7,46 @@
     <title>Hallbrook Form Automater</title>
 </head>
 <body>
-    <p>Test</p>
+    <h1>Generating Document...</h1>
+    <script src="docxtemplater.v3.47.4.js"></script>
+    <script src="pizzip.js"></script>
+    <script src="FileSaver.js"></script>
+    <script>
+        // parse URL parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            let clientData = params.get('clientData');
+            try {
+                clientData = JSON.parse(decodeURIComponent(clientData)); // parse clientData from query string
+            } catch (error) {
+                console.error('Error parsing clientData:', error);
+            }
+            return clientData;
+        }
+    
+        // get client data from URL parameters
+        const clientData = getQueryParams();
+    
+        console.log("Generating document with data: ", clientData);
+    
+        function generateDocument(data, templateFile) {
+            fetch(templateFile)
+                .then(res => res.arrayBuffer())
+                .then(content => {
+                    const zip = new PizZip(content);
+                    const doc = new window.docxtemplater(zip);
+                    doc.setData(data);
+                    doc.render();
+                    const out = doc.getZip().generate({ type: 'blob' });
+                    saveAs(out, 'output.docx');
+                });
+        }
+    
+        // start the document generation when the page loads
+        window.onload = function () {
+            generateDocument(clientData, './templates/Freepost envelope letter.docx'); // template path
+        };
+    </script>
+    
 </body>
 </html>
