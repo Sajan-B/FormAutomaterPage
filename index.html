@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Generating Document...</h1>
-    <script src="lib/docxtemplater-latest.js"></script>
-    <script src="lib/pizzip.js"></script>
     <script src="lib/FileSaver.js"></script>
+    <script src="https://unpkg.com/pizzip@3.1.1/dist/pizzip.min.js"></script>
+    <script src="https://unpkg.com/docxtemplater@3.21.0/build/docxtemplater.js"></script>
     <script>
         // parse URL parameters
         function getQueryParams() {
@@ -47,6 +47,5 @@
             generateDocument(clientData, './templates/Freepost envelope letter.docx'); // template path
         };
     </script>
-    
 </body>
 </html>
