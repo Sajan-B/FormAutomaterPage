@@ -16,11 +16,14 @@
         function getQueryParams() {
             const params = new URLSearchParams(window.location.search);
             let clientData = params.get('clientData');
+            
             try {
-                clientData = JSON.parse(decodeURIComponent(clientData)); // parse clientData from query string
+                // Parse clientData from JSON string
+                clientData = JSON.parse(decodeURIComponent(clientData));
             } catch (error) {
                 console.error('Error parsing clientData:', error);
             }
+            
             return clientData;
         }
     
@@ -38,7 +41,7 @@
                     doc.setData(data);
                     doc.render();
                     const out = doc.getZip().generate({ type: 'blob' });
-                    saveAs(out, 'output.docx');
+                    saveAs(out, 'CFC Letter.docx');
                 });
         }
     
