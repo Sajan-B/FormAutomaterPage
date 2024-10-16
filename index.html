@@ -37,7 +37,7 @@
                 .then(res => res.arrayBuffer())
                 .then(content => {
                     const zip = new PizZip(content);
-                    const doc = new window.docxtemplater(zip);
+                    const doc = new window.docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
                     doc.setData(data);
                     doc.render();
                     const out = doc.getZip().generate({ type: 'blob' });
