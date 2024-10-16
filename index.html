@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
     <title>Hallbrook Form Automater</title>
 </head>
 <body>
@@ -45,6 +45,8 @@
                 });
         }
     
+        console.log('Formatted Address:', formattedAddress);
+
         // start the freepost template document generation when the page loads
         window.onload = function () {
             generateDocument(clientData, './templates/Freepost envelope letter.docx'); // template path
