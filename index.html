@@ -59,7 +59,10 @@
                     const out = doc.getZip().generate({ type: 'blob' });
                     saveAs(out, 'CFC Letter.docx');
                 });
-            window.close();
+
+            setTimeout(function(){
+                window.close();
+            }, 3000);
         }
     </script>
 </body>
