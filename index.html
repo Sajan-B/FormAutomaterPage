@@ -46,9 +46,18 @@
         }
 
         // start the freepost template document generation when the page loads
-        window.onload = function () {
-            generateDocument(clientData, './templates/Freepost envelope letter.docx'); // template path
-        };
+        const urlParams = new URLSearchParams(window.location.search);
+        const docType = urlParams.get('docType'); // get the document type from query param
+
+        if (docType === 'freepost') {
+            window.onload = function () {
+                generateDocument(clientData, './templates/Freepost envelope letter.docx'); // template path
+            };
+        } else if (docType === 'contactUs') {
+            window.onload = function () {
+                generateDocument(clientData, './templates/Please Contact Us.docx'); // template path
+            };
+        }
     </script>
 </body>
 </html>
