@@ -30,7 +30,7 @@
         // get client data from URL parameters
         const clientData = getQueryParams();
     
-        console.log("Generating document with data: ", clientData);
+        console.log("Generating document with data: ", clientData, docType);
     
         function generateDocument(data, templateFile) {
             fetch(templateFile)
